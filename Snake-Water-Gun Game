@@ -1,0 +1,46 @@
+#Snake-Water-Gun Game
+
+import random
+lst = ['S','W','G']
+chance = 3
+number_of_chances = 0
+my_wins = 0
+comp_wins = 0 
+
+while number_of_chances < chance:
+    comp = random.choice(lst)
+    you = input('Enter S for snake, W for Water, G for Gun: ')
+
+    if comp == 'S' and you == 'W':
+        comp_wins += 1
+        print('Snake drinks water, You Lost..Try again')
+    elif comp == 'S' and you == 'G':
+        my_wins += 1
+        print('Gun shoots the snake, you win')
+    elif comp == 'W' and you == 'S':
+        my_wins += 1
+        print('Snake drinks water, You won')
+    elif comp == 'W' and you == 'G':
+        comp_wins += 1
+        print('Gun damaged in water, you lost')
+    elif comp == 'G' and you == 'S':
+        comp_wins += 1
+        print('Gun shoots the snake, you lost')
+    elif comp == 'G' and you == 'W':
+        my_wins += 1
+        print('Gun damaged in water, you win')
+    elif comp == you:
+        print('Tie, no reward')
+    else:
+        print(comp,you)
+        print('invalid input, Try again')
+    number_of_chances += 1
+    print(f"No. of chances left {chance - number_of_chances}: ")
+    print(f'My Points: {my_wins}')
+    print(f'Comp Points: {comp_wins}')
+if my_wins > comp_wins:
+    print('YOU ARE THE WINNER')
+elif my_wins < comp_wins:
+    print('YOU ARE THE LOSER')
+else:
+    print('Game Tied')
